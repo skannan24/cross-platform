@@ -1,0 +1,93 @@
+<div class="container-fluid pt-1 mb-2 p-1">
+  <div *ngIf="userId" class="card">
+    <div class="posts-color">
+      <h2 class="p-2 m-0">Seller details:</h2>
+    </div>
+    <div class="posts-color row p-2">
+      <div class="col-auto">
+        <strong><span class="badge badge-pill profile-badge">Seller:</span> {{currentPosts[0]?.user?.user_name}}</strong>
+      </div>
+      <div class="col-auto">
+        <strong><span class="badge badge-pill profile-badge">Ratings:</span> {{currentPosts[0]?.user?.rating}}</strong>
+      </div>
+      <div class="col-auto">
+        <strong><span class="badge badge-pill profile-badge">Is spam:</span> {{currentPosts[0]?.user?.is_spam}}</strong>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="posts-color row pl-2">
+      <h3 class="mb-0"><strong class="pl-3 pt-2">Filters: </strong></h3>
+    </div>
+    <div class="posts-color row p-2">
+      <div class="col-auto">
+        <span class="badge filter-badge border">Lifestyle</span>
+      </div>
+      <div class="col-auto">
+        <span class="badge filter-badge border">Electronics</span>
+      </div>
+      <div class="col-auto">
+        <span class="badge filter-badge border">Food</span>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let post of currentPosts" class="m-2 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <div class="posts-color row">
+          <div class="col-2">
+            <span class="material-icons">account_circle</span>
+          </div>
+          <div class="col-6">
+            <strong class="p-2">
+              <span>{{post?.user?.user_name}}</span><br/>
+              <span>{{post?.created_date}}</span>
+            </strong>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-dark buy-now">Buy now</button>
+          </div>
+        </div>
+      </div>
+      <span>
+<!--      <video *ngIf="post?.media_url" width="100%" autoplay="autoplay" controls>-->
+<!--          <source [src]="domSanitizer.bypassSecurityTrustResourceUrl('https://hackathon-123.s3.ap-south-1.amazonaws.com/9.mp4')" type="video/mp4">-->
+<!--      </video>-->
+        <video *ngIf="post?.media_url" width="100%" controls>
+          <source [src]="domSanitizer.bypassSecurityTrustResourceUrl(post?.media_url)" type="video/mp4">
+      </video>
+      </span>
+      <div class="card-footer">
+        <div class="posts-color row">
+          <div class="col-auto">
+            <span *ngIf="!post?.is_liked" class="material-icons" (click)="addLikes(post)">thumb_up</span>
+            <span *ngIf="post?.is_liked" class="material-icons liked-post" (click)="addLikes(post)">thumb_up</span>
+          </div>
+          <div class="col-auto">
+            <span class="material-icons">comment</span>
+          </div>
+          <div class="col-auto">
+            <span class="material-icons">send</span>
+          </div>
+<!--          <div class="col-auto">-->
+<!--            <span class="badge badge-pill rating-badge p-1">Ratings: <strong>4.5/5</strong></span>-->
+<!--          </div>-->
+        </div>
+        <div class="posts-color row">
+          <span class="p-2">{{post?.like}} likes</span>
+        </div>
+        <div class="posts-color row mt-1 mb-1 justify-content-between">
+          <div class="col-auto">
+            <span class="badge badge-pill rating-badge">Ratings: <strong>4.5/5</strong></span>
+          </div>
+          <div class="col-auto">
+            <span class="badge badge-pill rating-badge">Price: <strong>{{post?.price}}</strong></span>
+          </div>
+        </div>
+        <div class="posts-color">
+          <strong>{{post?.description}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

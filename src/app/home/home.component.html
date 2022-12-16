@@ -1,0 +1,104 @@
+<div class="container-fluid pt-1 mb-2 p-1">
+  <div *ngFor="let post of posts" class="m-2 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <div class="posts-color row">
+          <div class="col-1">
+            <span class="material-icons">account_circle</span>
+          </div>
+          <div class="col-9">
+            <strong class="p-2">
+              <span>{{post?.user?.user_name}}</span><br/>
+              <span>{{post?.created_date}}</span>
+            </strong>
+          </div>
+          <div *ngIf="post?.is_ad" class="col-1">
+            <span class="material-icons">shop_two</span>
+          </div>
+        </div>
+      </div>
+      <span>
+<!--        <video *ngIf="post?.media_url" width="100%" autoplay="autoplay" controls>-->
+<!--          <source [src]="domSanitizer.bypassSecurityTrustResourceUrl('https://hackathon-123.s3.ap-south-1.amazonaws.com/9.mp4')" type="video/mp4">-->
+<!--        </video>-->
+<!--        <youtube-player-->
+<!--          [videoId]="getVideoId(post?.media_url)"-->
+<!--          suggestedQuality="highres"-->
+<!--          [height]="250"-->
+<!--          [width]="500"-->
+<!--          [startSeconds]="4"-->
+<!--          [endSeconds]="8">-->
+<!--        </youtube-player>-->
+      <img
+        class="pb-1 responsive"
+        [src]="domSanitizer.bypassSecurityTrustUrl(post?.media_thumbnail ? post?.media_thumbnail : post?.media_url)">
+        <div *ngIf="post?.is_ad" class="row cursor m-1 post-color-light" (click)="routeToShop(post?.user?.user_id)">
+          <div class="col-5 posts-color mt-1">
+            <strong style="font-size: 17px">View more</strong>
+          </div>
+          <div class="col-1 posts-color">
+            <span class="material-icons" style="font-size: 30px">forward</span>
+          </div>
+        </div>
+      </span>
+      <div class="card-footer">
+        <div *ngIf="!post?.is_ad" class="posts-color row">
+          <div class="col-3">
+            <span *ngIf="!post?.is_liked" class="material-icons" (click)="addLikes(post)">thumb_up</span>
+            <span *ngIf="post?.is_liked" class="material-icons liked-post" (click)="addLikes(post)">thumb_up</span><br/>
+            <span>{{post?.like}} likes</span>
+          </div>
+          <div class="col-3">
+            <span class="material-icons">comment</span>
+          </div>
+          <div class="col-3">
+            <span class="material-icons">send</span>
+          </div>
+        </div>
+        <div class="posts-color">
+          <strong>{{post?.description}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #commentTemplate>
+  <div class="modal-body text-center">
+    <h2 class="mt-2 mb-0">Comments</h2>
+    <hr class="mt-0" style="border: 1px solid #009688;">
+    <div class="card mt-2">
+<!--      <div *ngFor="let comment of comments">-->
+<!--        <div-->
+<!--          *ngIf="whatsappHistory?.msg_info[0]?.msg_type === 'SENT'"-->
+<!--          [ngClass]="mobWidth > 600 ? 'card mt-2 offset-md-6 large-device' : 'card mt-2 offset-md-6 small-device'"-->
+<!--          style="background: #b5e7a0"-->
+<!--        >-->
+<!--          <div class="row m-2">-->
+<!--            {{whatsappHistory?.msg_info[0]?.message}}<br/>-->
+<!--          </div>-->
+<!--          <div class="row mr-2 justify-content-end">-->
+<!--            <small>-->
+<!--              Sent on: {{whatsappHistory?.msg_info[0]?.datetime | slice:0:10}},-->
+<!--              {{getCallTime(whatsappHistory?.msg_info[0]?.datetime)}}-->
+<!--            </small>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div *ngIf="whatsappHistory?.msg_info[0]?.msg_type === 'RECEIVED'"-->
+<!--             [ngClass]="mobWidth > 600 ? 'card mt-2 large-device' : 'card mt-2 small-device'"-->
+<!--             style="background: snow"-->
+<!--        >-->
+<!--          <div class="row m-2">-->
+<!--            {{whatsappHistory?.msg_info[0]?.message}}<br/>-->
+<!--          </div>-->
+<!--          <div class="row ml-2">-->
+<!--            <small>-->
+<!--              Sent on: {{whatsappHistory?.msg_info[0]?.datetime | slice:0:10}},-->
+<!--              {{getCallTime(whatsappHistory?.msg_info[0]?.datetime)}}-->
+<!--            </small>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</ng-template>

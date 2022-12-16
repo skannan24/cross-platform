@@ -1,0 +1,50 @@
+.dark {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.dark:hover {
+  color: #fff;
+  background-color: #23272b;
+  border-color: #1d2124;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+
+.crossover-color-white {
+  background-color: #fff;
+  border-color: #FFFFFF;
+}
+
+.crossover-color {
+  color: #fff;
+  background-color: #968074;
+  border-color: #968074;
+}
+
+.crossover-color:hover {
+  color: #fff;
+  background-color: #634f39;
+  border-color: #634f39;
+}
+
+.crossover-color-footer {
+  color: #fff;
+  background-color: #634f39;
+  border-color: #634f39;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

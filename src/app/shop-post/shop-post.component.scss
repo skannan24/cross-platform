@@ -1,0 +1,71 @@
+.crossover-color {
+  color: #fff;
+  background-color: #968074;
+  border-color: #968074;
+}
+
+.center-cropped {
+  object-fit: none; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 200px;
+  width: 100%;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.posts-card {
+  background-color: #9c9464;
+  border-color: #9c9464;
+}
+
+.posts-color {
+  color: #968074
+}
+
+.post-color-light {
+  color: #FBEBE2;
+}
+
+.cursor:hover{
+  cursor: pointer;
+}
+
+.profile-badge {
+  color: #fff;
+  background-color: #968074;
+  border-color: #968074;
+  font-size: 12px;
+}
+
+.rating-badge {
+  color: #fff;
+  background-color: #968074;
+  border-color: #968074;
+  font-size: 14px;
+}
+
+.filter-badge {
+  color: #968074;
+  background-color: #fff;
+  border-color: #968074;
+  font-size: 15px;
+}
+
+.buy-now {
+  color: #fff;
+  background-color: #968074;
+  border-color: #968074;
+}
+
+.buy-now:hover {
+  color: #fff;
+  background-color: #78665C;
+  border-color: #78665C;
+}
+
+.liked-post {
+  color: #f1cd79;
+}
